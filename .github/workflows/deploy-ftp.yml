@@ -24,6 +24,9 @@ jobs:
           server-dir: /memory/
           local-dir: ./
           exclude: |
+            .git/
+            .git/**
             **/.git*
+            **/.git/**
             **/.github/**
             **/node_modules/**
