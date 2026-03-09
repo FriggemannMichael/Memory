@@ -32,6 +32,22 @@ jobs:
             **/.git/**
             **/.github/**
             **/node_modules/**
+            .claude/
+            .claude/**
+            .codex/
+            .codex/**
+            .agents/
+            .agents/**
+            .cursor/
+            .cursor/**
+            AGENTS.md
+            CLAUDE.md
+            CODEX.md
+            GEMINI.md
+            **/AGENTS.md
+            **/CLAUDE.md
+            **/CODEX.md
+            **/GEMINI.md
 
       - name: Fallback upload via plain FTP (Normal)
         if: steps.deploy_ftps.outcome == 'failure'
@@ -50,3 +66,19 @@ jobs:
             **/.git/**
             **/.github/**
             **/node_modules/**
+            .claude/
+            .claude/**
+            .codex/
+            .codex/**
+            .agents/
+            .agents/**
+            .cursor/
+            .cursor/**
+            AGENTS.md
+            CLAUDE.md
+            CODEX.md
+            GEMINI.md
+            **/AGENTS.md
+            **/CLAUDE.md
+            **/CODEX.md
+            **/GEMINI.md
