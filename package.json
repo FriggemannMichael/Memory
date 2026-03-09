@@ -1,0 +1,34 @@
+{
+  "name": "memory",
+  "version": "1.0.0",
+  "description": "Web-basiertes Memory-Spiel mit mehreren Spielfeldgroessen, Themes und Spielerfarben.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build:ts && npm run build:scss",
+    "build:ts": "tsc",
+    "watch:ts": "tsc --watch",
+    "build:scss": "sass src/styles/main.scss dist/styles/main.css --no-source-map",
+    "watch:scss": "sass --watch src/styles/main.scss:dist/styles/main.css",
+    "dev": "npm run watch:ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FriggemannMichael/Memory.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/FriggemannMichael/Memory/issues"
+  },
+  "homepage": "https://github.com/FriggemannMichael/Memory#readme",
+  "devDependencies": {
+    "sass": "^1.97.3",
+    "typescript": "^5.9.3"
+  }
+}
