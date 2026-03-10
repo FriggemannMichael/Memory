@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "memory-app": {
+    "memory": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -86,10 +86,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "memory-app:build:production"
+              "buildTarget": "memory:build:production"
             },
             "development": {
-              "buildTarget": "memory-app:build:development"
+              "buildTarget": "memory:build:development"
             }
           },
           "defaultConfiguration": "development"
