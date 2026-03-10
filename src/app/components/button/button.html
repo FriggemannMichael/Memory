@@ -1,3 +1,5 @@
 <button type="button" class="btn" [class]="'btn btn-' + variant" (click)="onClick.emit()">
-  {{ label }}
+  <img class="btn-icon btn-icon-left" src="/img/stadia_controller_small.svg" alt="" aria-hidden="true" />
+  <span class="btn-label">{{ label }}</span>
+  <img class="btn-icon btn-icon-right" src="/img/Arrow 1.svg" alt="" aria-hidden="true" />
 </button>
