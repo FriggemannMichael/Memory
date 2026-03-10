@@ -1,34 +1,41 @@
 {
-  "name": "memory",
-  "version": "1.0.0",
-  "description": "Web-basiertes Memory-Spiel mit mehreren Spielfeldgroessen, Themes und Spielerfarben.",
-  "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
+  "name": "memory-app",
+  "version": "0.0.0",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run build:ts && npm run build:scss",
-    "build:ts": "tsc",
-    "watch:ts": "tsc --watch",
-    "build:scss": "sass src/styles/main.scss dist/styles/main.css --no-source-map",
-    "watch:scss": "sass --watch src/styles/main.scss:dist/styles/main.css",
-    "dev": "npm run watch:ts"
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/FriggemannMichael/Memory.git"
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "overrides": [
+      {
+        "files": "*.html",
+        "options": {
+          "parser": "angular"
+        }
+      }
+    ]
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
-  "bugs": {
-    "url": "https://github.com/FriggemannMichael/Memory/issues"
+  "private": true,
+  "packageManager": "npm@11.0.0",
+  "dependencies": {
+    "@angular/common": "^21.0.0",
+    "@angular/compiler": "^21.0.0",
+    "@angular/core": "^21.0.0",
+    "@angular/forms": "^21.0.0",
+    "@angular/platform-browser": "^21.0.0",
+    "@angular/router": "^21.0.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
   },
-  "homepage": "https://github.com/FriggemannMichael/Memory#readme",
   "devDependencies": {
-    "sass": "^1.97.3",
-    "typescript": "^5.9.3"
+    "@angular/build": "^21.0.2",
+    "@angular/cli": "^21.0.2",
+    "@angular/compiler-cli": "^21.0.0",
+    "typescript": "~5.9.2"
   }
 }
