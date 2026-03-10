@@ -7,6 +7,9 @@ build/
 out/
 coverage/
 
+# Angular
+.angular/
+
 # Logs
 *.log
 npm-debug.log*

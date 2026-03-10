@@ -1,0 +1,18 @@
+.hero {
+  max-width: 900px;
+  text-align: center;
+
+  &__subtitle {
+    display: flex;
+    justify-content: flex-start;
+    margin: 0 0 8px;
+    font-family: var(--font-text);
+    font-size: clamp(1.5rem, 4vw, 3rem);
+  }
+
+  &__title {
+    margin: 0 0 24px;
+    font-size: clamp(3rem, 10vw, 8.75rem);
+    line-height: 1;
+  }
+}
