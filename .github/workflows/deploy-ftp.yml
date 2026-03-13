@@ -23,7 +23,7 @@ jobs:
         run: npm ci
 
       - name: Build Angular app
-        run: npm run build
+        run: npx ng build --base-href=/memory/
 
       - name: Upload to server via FTPS (explicit TLS)
         id: deploy_ftps
