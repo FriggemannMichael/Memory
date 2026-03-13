@@ -18,7 +18,7 @@
   &-primary {
     background: var(--color-primary);
     color: var(--color-bg);
-    font-family: "Red Rose", serif;
+    font-family: 'Red Rose', serif;
     font-size: 40px;
     font-weight: 700;
     line-height: 1;
@@ -28,6 +28,10 @@
 .controller-icon {
   width: 44px;
   height: 32px;
+}
+
+.btn:hover .controller-icon {
+  transform: rotate(-37deg);
 }
 
 .arrow {

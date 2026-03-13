@@ -1,10 +1,10 @@
-<button type="button" class="btn" [class]="'btn btn-' + variant" (click)="onClick.emit()">
+<button type="button" [class]="'btn btn-' + variant" (click)="onClick.emit()">
   <img
     class="controller-icon"
     src="/img/stadia_controller_small.svg"
     alt="controller icon"
-    aria-hidden="true>"
+    aria-hidden="true"
   />
   <span class="btn-label">{{ label }}</span>
-  <img class="arrow" src="/img/Arrow 1.svg" alt="" aria-hidden="true>" />
+  <img class="arrow" src="/img/Arrow 1.svg" alt="" aria-hidden="true" />
 </button>

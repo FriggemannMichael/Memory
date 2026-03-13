@@ -5,6 +5,16 @@
   padding: 24px;
 
   &-home {
-    // home-specific overrides
+    position: relative;
+    overflow: hidden;
+
+    &__controller {
+      position: absolute;
+      left: 24px;
+      bottom: 24px;
+      width: min(32vw, 420px);
+      height: auto;
+      pointer-events: none;
+    }
   }
 }

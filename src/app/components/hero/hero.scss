@@ -1,6 +1,12 @@
 .hero {
+  display: flex;
+  flex-direction: column;
   max-width: 900px;
   text-align: center;
+
+  app-button {
+    align-self: center;
+  }
 
   &__subtitle {
     display: flex;
