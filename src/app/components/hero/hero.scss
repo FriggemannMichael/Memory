@@ -6,13 +6,17 @@
     display: flex;
     justify-content: flex-start;
     margin: 0 0 8px;
-    font-family: var(--font-text);
-    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-family: "Almarai", sans-serif;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 1.1;
   }
 
   &__title {
     margin: 0 0 24px;
-    font-size: clamp(3rem, 10vw, 8.75rem);
+    font-family: "Red Rose", serif;
+    font-size: 140px;
+    font-weight: 700;
     line-height: 1;
   }
 }
