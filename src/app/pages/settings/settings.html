@@ -1,1 +1,129 @@
-<p>settings works!</p>
+
+<main class="settings-page">
+  <section class="settings-shell">
+    <header class="settings-header">
+      <h1 class="settings-title">Settings</h1>
+      <div class="settings-title-line" aria-hidden="true"></div>
+    </header>
+
+    <div class="settings-grid">
+      <section class="settings-card settings-card--themes" aria-labelledby="themes-heading">
+        <div class="settings-card__heading">
+          <img class="settings-card__icon" src="/img/icon_Game.svg" alt="" aria-hidden="true" />
+          <h2 id="themes-heading">Game themes</h2>
+        </div>
+
+        <div class="settings-options">
+          <label class="settings-option settings-option--active">
+            <input type="radio" name="theme" checked />
+            <span class="settings-option__control"></span>
+            <span class="settings-option__label">Coding vibes</span>
+          </label>
+
+          <label class="settings-option">
+            <input type="radio" name="theme" />
+            <span class="settings-option__control"></span>
+            <span class="settings-option__label">Cheeky chaos</span>
+          </label>
+
+          <label class="settings-option">
+            <input type="radio" name="theme" />
+            <span class="settings-option__control"></span>
+            <span class="settings-option__label">Pixel night</span>
+          </label>
+
+          <label class="settings-option">
+            <input type="radio" name="theme" />
+            <span class="settings-option__control"></span>
+            <span class="settings-option__label">Arcade glow</span>
+          </label>
+        </div>
+      </section>
+
+      <aside class="settings-preview" aria-label="Theme preview">
+        <div class="settings-preview__frame">
+          <div class="settings-preview__topbar">
+            <div class="settings-preview__score">
+              <span class="settings-preview__badge settings-preview__badge--blue">Blue 0</span>
+              <span class="settings-preview__badge settings-preview__badge--orange">Orange 6</span>
+            </div>
+            <span class="settings-preview__current">Current player</span>
+            <button type="button" class="settings-preview__exit">Exit game</button>
+          </div>
+
+          <div class="settings-preview__cards" aria-hidden="true">
+            <div class="settings-preview__card settings-preview__card--back"></div>
+            <div class="settings-preview__card settings-preview__card--front"></div>
+          </div>
+        </div>
+      </aside>
+
+      <section class="settings-card settings-card--choices" aria-labelledby="player-heading">
+        <div class="settings-stack">
+          <section class="settings-group" aria-labelledby="player-heading">
+            <div class="settings-card__heading">
+              <img class="settings-card__icon" src="/img/player.svg" alt="" aria-hidden="true" />
+              <h2 id="player-heading">Choose player</h2>
+            </div>
+
+            <div class="settings-options">
+              <label class="settings-option settings-option--active">
+                <input type="radio" name="player-count" checked />
+                <span class="settings-option__control"></span>
+                <span class="settings-option__label">1 player</span>
+              </label>
+
+              <label class="settings-option">
+                <input type="radio" name="player-count" />
+                <span class="settings-option__control"></span>
+                <span class="settings-option__label">2 players</span>
+              </label>
+            </div>
+          </section>
+
+          <section class="settings-group" aria-labelledby="board-heading">
+            <div class="settings-card__heading">
+              <img class="settings-card__icon" src="/img/bord_size.svg" alt="" aria-hidden="true" />
+              <h2 id="board-heading">Board size</h2>
+            </div>
+
+            <div class="settings-options">
+              <label class="settings-option settings-option--active">
+                <input type="radio" name="board-size" checked />
+                <span class="settings-option__control"></span>
+                <span class="settings-option__label">4 x 4</span>
+              </label>
+
+              <label class="settings-option">
+                <input type="radio" name="board-size" />
+                <span class="settings-option__control"></span>
+                <span class="settings-option__label">4 x 6</span>
+              </label>
+
+              <label class="settings-option">
+                <input type="radio" name="board-size" />
+                <span class="settings-option__control"></span>
+                <span class="settings-option__label">6 x 6</span>
+              </label>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="settings-toolbar" aria-label="Current settings and start">
+        <div class="settings-summary">
+          <span>Theme</span>
+          <span class="settings-summary__slash" aria-hidden="true"></span>
+          <span>Player</span>
+          <span class="settings-summary__slash" aria-hidden="true"></span>
+          <span>Board size</span>
+        </div>
+
+        <button type="button" class="settings-start">
+          <img class="settings-start__icon" src="/img/smart_display.svg" alt="" aria-hidden="true" />
+          <span>Start</span>
+        </button>
+      </section>
+    </div>
+  </section>
+</main>
