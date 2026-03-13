@@ -1,8 +1,11 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
+import { Button } from '../button/button';
+
 @Component({
   selector: 'app-hero',
-  standalone: false,
+  imports: [Button],
+  standalone: true,
   templateUrl: './hero.html',
   styleUrl: './hero.scss',
 })
