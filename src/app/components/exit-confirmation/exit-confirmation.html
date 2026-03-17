@@ -1,5 +1,12 @@
 @if (open) {
-  <div class="popup-backdrop" (click)="onBackdropClick($event)" role="dialog" aria-modal="true">
+  <div
+    class="popup-backdrop"
+    (click)="onBackdropClick($event)"
+    (keydown)="handleBackdropKeydown($event)"
+    role="dialog"
+    aria-modal="true"
+    tabindex="0"
+  >
     <div class="popup-content">
       <h2 class="popup-title">Are you sure you want to quit the game?</h2>
       

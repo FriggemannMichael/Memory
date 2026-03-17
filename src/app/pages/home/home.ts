@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Hero } from '../../components/hero/hero';
@@ -11,7 +11,7 @@ import { Hero } from '../../components/hero/hero';
   styleUrl: './home.scss',
 })
 export class Home {
-  constructor(private router: Router) {}
+  private readonly router = inject(Router);
 
   goToSettings(): void {
     this.router.navigate(['/settings']);

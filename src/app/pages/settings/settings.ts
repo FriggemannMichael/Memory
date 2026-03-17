@@ -1,3 +1,4 @@
+import { DOCUMENT } from '@angular/common';
 import { Component, computed, inject, signal } from '@angular/core';
 import { Router } from '@angular/router';
 
@@ -20,6 +21,7 @@ const THEME_PREVIEW_BY_OPTION: Record<ThemeOption, string> = {
 })
 export class Settings {
   private readonly router = inject(Router);
+  private readonly document = inject(DOCUMENT);
   protected readonly themeOptions: ThemeOption[] = [
     'Coding vibes',
     'Gaming',
@@ -61,6 +63,10 @@ export class Settings {
       this.selectedPlayer() !== null &&
       this.selectedBoardSize() !== null,
   );
+
+  constructor() {
+    this.document.body.setAttribute('data-theme', 'code-vibes');
+  }
 
   protected selectTheme(theme: ThemeOption): void {
     this.selectedTheme.set(theme);

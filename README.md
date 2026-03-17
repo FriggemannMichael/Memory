@@ -4,17 +4,17 @@ Web-basiertes Memory-Spiel mit mehreren Spielfeldgroessen, Themes und Spielerfar
 
 ## Projektstatus
 
-Dieses Repository enthaelt aktuell vor allem Projekt-Dokumentation und Design-Assets. Die technische Umsetzung kann hier schrittweise erweitert werden.
+Die Angular-Umsetzung ist vorhanden und deckt aktuell Startseite, Settings, Spielansicht, Exit-Popup sowie Endbildschirme fuer `Coding vibes` und `Gaming` ab.
 
 ## Features (laut Checkliste)
 
 - Startseite mit Start-Button und Controller-Animation
 - Settings-Ansicht fuer Spielerfarbe, Spielfeldgroesse und Theme
 - Mindestens 2 visuelle Layouts / Farbschemata
-- Spielfeld in den Groessen 4x4, 4x6 und 8x8
+- Spielfeld in den Groessen 4x4, 4x6 und 6x6
 - Spielstatus-Anzeige (Punkte, aktiver Spieler, Exit)
 - Karten-Flip-Animation
-- Game-Over-Anzeige mit Gewinner und Rueckkehr zum Home-Screen
+- Endbildschirme fuer Spielende / Gewinner und Rueckkehr in den Flow
 
 ## Abnahme-Checkliste
 
@@ -27,7 +27,7 @@ Dieses Repository enthaelt aktuell vor allem Projekt-Dokumentation und Design-As
 ### User Story 2
 
 - [ ] 2 Spielerfarben waehlbar (z. B. Blau / Orange)
-- [ ] Spielfeldgroessen 4x4, 4x6, 8x8 waehlbar
+- [ ] Spielfeldgroessen 4x4, 4x6, 6x6 waehlbar
 - [ ] Mehrere Themes waehlbar
 - [ ] Mindestens 2 Themes implementiert
 
@@ -57,9 +57,25 @@ Dieses Repository enthaelt aktuell vor allem Projekt-Dokumentation und Design-As
 ## Projektstruktur
 
 - `docs/checkliste/checkliste.md`: Projektanforderungen
-- `docs/design/design.md`: Design-Dokumentation
-- `docs/design/img/`: Assets und Icon-Sammlungen
+- `docs/checkliste/design.md`: Design-Dokumentation
+- `public/`: Assets und SVGs
+- `src/app/`: Angular-Komponenten und Seiten
 - `.github/workflows/deploy-ftp.yml`: Deploy via FTP/FTPS auf `/memory/`
+
+## Lokales Arbeiten
+
+- `npm install`
+- `npm start`
+- `npm run build`
+
+## QA-Stand
+
+- Build geprueft mit `npm run build`
+- Hauptflows manuell geprueft: Home -> Settings -> Game -> Winner / Game Over -> zurueck in den Flow
+- Theme-Wechsel geprueft fuer `Coding vibes` und `Gaming`
+- Bekannte Restpunkte:
+  - Es gibt aktuell keinen separaten Lint-Script in `package.json`
+  - Die SCSS-Dateien fuer `game` und `settings` liegen ueber dem konfigurierten Budget
 
 ## Deployment
 
@@ -78,6 +94,6 @@ Benoetigte Repository-Secrets:
 
 ## Naechste Schritte
 
-- Spiel-Frontend und Logik implementieren
-- README um lokale Start-Anleitung (`npm install`, `npm run dev/build`) erweitern, sobald die App-Struktur vorhanden ist
+- Offene GitHub-Issues weiter gegen den aktuellen Projektstand abgleichen
+- SCSS-Budgets reduzieren
 - Checkliste im Verlauf abhaken

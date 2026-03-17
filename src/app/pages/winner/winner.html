@@ -1,0 +1,35 @@
+<main class="winner-page">
+  @if (!isGaming()) {
+    <img
+      src="/img/Confetti.svg"
+      alt=""
+      aria-hidden="true"
+      class="winner-confetti"
+    />
+  }
+
+  <section class="winner-shell">
+    <div class="winner-content">
+      <div class="winner-text">
+        @if (winner() === 'draw') {
+          <h1 class="winner-title">It's a draw!</h1>
+        } @else {
+          <h1 class="winner-title">The winner is</h1>
+          <p class="winner-name" [class.winner-name--blue]="winner() === 'blue'" [class.winner-name--orange]="winner() === 'orange'">
+            {{ winner() === 'blue' ? 'Blue' : 'Orange' }}
+          </p>
+        }
+      </div>
+
+      @if (winner() !== 'draw') {
+        <div class="winner-player">
+          <img [src]="winnerImage()" alt="" aria-hidden="true" class="winner-avatar" />
+        </div>
+      }
+    </div>
+
+    <button type="button" class="winner-btn" (click)="goToSettings()">
+      Back to game
+    </button>
+  </section>
+</main>

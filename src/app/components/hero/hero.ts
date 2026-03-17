@@ -13,5 +13,5 @@ export class Hero {
   @Input() subtitle = '';
   @Input() title = '';
   @Input() ctaLabel = '';
-  @Output() onCta = new EventEmitter<void>();
+  @Output() cta = new EventEmitter<void>();
 }

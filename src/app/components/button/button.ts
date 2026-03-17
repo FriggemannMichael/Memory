@@ -9,5 +9,5 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class Button {
   @Input() label = '';
   @Input() variant: 'primary' | 'secondary' = 'primary';
-  @Output() onClick = new EventEmitter<void>();
+  @Output() clicked = new EventEmitter<void>();
 }

@@ -1,0 +1,18 @@
+@use "./tokens" as t;
+
+// Shared base for all button-like elements.
+// Use @include mixins.btn-base in any button rule to avoid duplication.
+@mixin btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-weight: 700;
+  transition: t.$transition-ui;
+
+  &:not(:disabled):hover {
+    transform: translateY(-1px);
+  }
+}

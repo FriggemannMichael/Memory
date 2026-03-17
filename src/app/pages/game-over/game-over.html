@@ -9,21 +9,21 @@
       <p class="gameover-result__label">Final score</p>
 
       <div class="gameover-scoreboard">
-        <div class="gameover-score">
-          <div class="gameover-score__name">
-            <img src="/img/label_blue.svg" alt="" aria-hidden="true" class="gameover-score__swatch" />
-            <span class="gameover-score__label gameover-score__label--blue">Blue</span>
+        <div class="score">
+          <div class="score__name">
+            <img src="/img/label_blue.svg" alt="" aria-hidden="true" class="score__swatch" />
+            <span class="score__label score__label--blue">Blue</span>
           </div>
-          <span class="gameover-score__value gameover-score__value--blue">{{ scoreBlue() }}</span>
+          <span class="score__value score__value--blue">{{ scoreBlue() }}</span>
         </div>
 
         @if (isTwoPlayer()) {
-          <div class="gameover-score">
-            <div class="gameover-score__name">
-              <img src="/img/lable_orange.svg" alt="" aria-hidden="true" class="gameover-score__swatch" />
-              <span class="gameover-score__label gameover-score__label--orange">Orange</span>
+          <div class="score">
+            <div class="score__name">
+              <img src="/img/lable_orange.svg" alt="" aria-hidden="true" class="score__swatch" />
+              <span class="score__label score__label--orange">Orange</span>
             </div>
-            <span class="gameover-score__value gameover-score__value--orange">{{ scoreOrange() }}</span>
+            <span class="score__value score__value--orange">{{ scoreOrange() }}</span>
           </div>
         }
       </div>

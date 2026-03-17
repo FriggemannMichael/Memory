@@ -10,12 +10,12 @@ type PlayerOption = '1 player' | '2 players';
 type BoardSizeOption = '4 x 4' | '4 x 6' | '6 x 6';
 type ThemeKey = 'code-vibes' | 'gaming';
 
-type CardItem = {
+interface CardItem {
   id: string;
   designId: string;
   imageSrc: string;
   label: string;
-};
+}
 
 const DEFAULT_THEME: ThemeOption = 'Coding vibes';
 const DEFAULT_PLAYER: PlayerOption = '1 player';
@@ -213,6 +213,18 @@ export class Game {
     });
   }
 
+  private goToWinner(): void {
+    const s = this.scores();
+    this.router.navigate(['/winner'], {
+      queryParams: {
+        scoreBlue: s[0],
+        scoreOrange: s[1],
+        player: this.selectedPlayer(),
+        theme: THEME_KEY_BY_OPTION[this.selectedTheme()],
+      },
+    });
+  }
+
   protected showExitPopup(): void {
     this.showExitConfirmation.set(true);
   }
@@ -262,7 +274,7 @@ export class Game {
       this.scores.set(updated);
 
       if (newMatched.length === this.cards().length) {
-        setTimeout(() => this.goToGameOver(), 600);
+        setTimeout(() => this.goToWinner(), 600);
       }
       return;
     }

@@ -1,14 +1,26 @@
 @use "sass:map";
 
+// ── Breakpoints ───────────────────────────────────────────────
+$bp-xs: 640px;
+$bp-sm: 820px;
+$bp-md: 900px;
+$bp-lg: 1100px;
+
+// ── Shared transition ─────────────────────────────────────────
+$transition-ui: transform 180ms ease;
+
+// ── Font stacks ───────────────────────────────────────────────
 $font-family-display: "Red Rose", serif;
 $font-family-text: "Almarai", sans-serif;
 $font-family-gaming: "Orbitron", sans-serif;
 $font-family-numbers: "October Devanagari", serif;
 
+// ── Base colors ───────────────────────────────────────────────
 $color-white: #ffffff;
 $color-dark: #303131;
 $color-surface-muted: #f6f6f6;
 
+// ── Theme maps ────────────────────────────────────────────────
 $themes: (
   "code-vibes": (
     color-bg: $color-dark,
@@ -21,6 +33,7 @@ $themes: (
     color-surface: $color-white,
     color-surface-soft: #e8f3f0,
     color-surface-muted: $color-surface-muted,
+    color-popup-bg: $color-white,
     color-exit-bg: rgba(134, 233, 214, 0.2),
     color-exit-border: #4dd5bc,
     gradient-card-front: linear-gradient(212.26deg, #4dd5bc 29.42%, #286f62 123.94%),
@@ -40,6 +53,8 @@ $themes: (
     color-surface-soft: #f6f1f3,
     color-surface-muted: #f0f6f9,
     color-popup-bg: #f0f6f9,
+    color-topbar-bg: rgba(253, 150, 201, 0.2),
+    color-badge-bg: #1faafc,
     color-exit-bg: rgba(237, 27, 118, 0.08),
     color-exit-border: #e71c4f,
     gradient-card-front: linear-gradient(147.13deg, #ed1b76 1.28%, #0a2835 142.53%),
