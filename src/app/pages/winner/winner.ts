@@ -41,9 +41,9 @@ export class Winner {
   protected readonly winnerImage = computed(() => {
     if (this.winner() === 'draw') return null;
     if (this.isGaming()) {
-      return '/img/pockal.svg';
+      return 'img/pockal.svg';
     }
-    return this.winner() === 'orange' ? '/img/chess_pawnorange.svg' : '/img/chess_pawnblue.svg';
+    return this.winner() === 'orange' ? 'img/chess_pawnorange.svg' : 'img/chess_pawnblue.svg';
   });
 
   constructor() {

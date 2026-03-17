@@ -35,46 +35,46 @@ const BOARD_DIMENSIONS: Record<BoardSizeOption, { columns: number; rows: number 
 };
 
 const GAME_ASSETS = [
-  '/thems/game/memory-game-icon-01.svg',
-  '/thems/game/memory-game-icon-02.svg',
-  '/thems/game/memory-game-icon-03.svg',
-  '/thems/game/memory-game-icon-04.svg',
-  '/thems/game/memory-game-icon-05.svg',
-  '/thems/game/memory-game-icon-06.svg',
-  '/thems/game/memory-game-icon-07.svg',
-  '/thems/game/memory-game-icon-08.svg',
-  '/thems/game/memory-game-icon-09.svg',
-  '/thems/game/memory-game-icon-10.svg',
-  '/thems/game/memory-game-icon-11.svg',
-  '/thems/game/memory-game-icon-12.svg',
-  '/thems/game/memory-game-icon-13.svg',
-  '/thems/game/memory-game-icon-14.svg',
-  '/thems/game/memory-game-icon-15.svg',
-  '/thems/game/memory-game-icon-16.svg',
-  '/thems/game/memory-game-icon-17.svg',
-  '/thems/game/memory-game-icon-18.svg',
-  '/thems/game/memory-game-icon-19.svg',
+  'thems/game/memory-game-icon-01.svg',
+  'thems/game/memory-game-icon-02.svg',
+  'thems/game/memory-game-icon-03.svg',
+  'thems/game/memory-game-icon-04.svg',
+  'thems/game/memory-game-icon-05.svg',
+  'thems/game/memory-game-icon-06.svg',
+  'thems/game/memory-game-icon-07.svg',
+  'thems/game/memory-game-icon-08.svg',
+  'thems/game/memory-game-icon-09.svg',
+  'thems/game/memory-game-icon-10.svg',
+  'thems/game/memory-game-icon-11.svg',
+  'thems/game/memory-game-icon-12.svg',
+  'thems/game/memory-game-icon-13.svg',
+  'thems/game/memory-game-icon-14.svg',
+  'thems/game/memory-game-icon-15.svg',
+  'thems/game/memory-game-icon-16.svg',
+  'thems/game/memory-game-icon-17.svg',
+  'thems/game/memory-game-icon-18.svg',
+  'thems/game/memory-game-icon-19.svg',
 ];
 
 const VIBES_ASSETS = [
-  '/thems/vibes/angular.svg',
-  '/thems/vibes/boot.svg',
-  '/thems/vibes/cmd.svg',
-  '/thems/vibes/css.svg',
-  '/thems/vibes/db.svg',
-  '/thems/vibes/dj.svg',
-  '/thems/vibes/folder.svg',
-  '/thems/vibes/git.svg',
-  '/thems/vibes/gitbash.svg',
-  '/thems/vibes/html.svg',
-  '/thems/vibes/js.svg',
-  '/thems/vibes/node.svg',
-  '/thems/vibes/py.svg',
-  '/thems/vibes/rea.svg',
-  '/thems/vibes/sass.svg',
-  '/thems/vibes/ts.svg',
-  '/thems/vibes/vscode.svg',
-  '/thems/vibes/vue.svg',
+  'thems/vibes/angular.svg',
+  'thems/vibes/boot.svg',
+  'thems/vibes/cmd.svg',
+  'thems/vibes/css.svg',
+  'thems/vibes/db.svg',
+  'thems/vibes/dj.svg',
+  'thems/vibes/folder.svg',
+  'thems/vibes/git.svg',
+  'thems/vibes/gitbash.svg',
+  'thems/vibes/html.svg',
+  'thems/vibes/js.svg',
+  'thems/vibes/node.svg',
+  'thems/vibes/py.svg',
+  'thems/vibes/rea.svg',
+  'thems/vibes/sass.svg',
+  'thems/vibes/ts.svg',
+  'thems/vibes/vscode.svg',
+  'thems/vibes/vue.svg',
 ];
 
 @Component({
@@ -122,7 +122,7 @@ export class Game {
 
   protected readonly activePlayerSwatch = computed(() =>
     this.isGaming()
-      ? '/img/chess_pawn.png'
+      ? 'img/chess_pawn.png'
       : this.getPlayerSwatch(this.activePlayerIndex() === 1 ? 'orange' : 'blue'),
   );
 
@@ -183,7 +183,7 @@ export class Game {
     () => THEME_KEY_BY_OPTION[this.selectedTheme()] === 'gaming',
   );
   protected readonly cardCoverImage = computed(() =>
-    this.isGaming() ? '/img/GameThemeFront.svg' : '/img/card theme_vibcodefront.svg',
+    this.isGaming() ? 'img/GameThemeFront.svg' : 'img/card theme_vibcodefront.svg',
   );
   protected readonly showCardFrame = computed(() => !this.isGaming());
 
@@ -321,10 +321,10 @@ export class Game {
 
   protected getPlayerSwatch(color: 'blue' | 'orange'): string {
     if (this.isGaming()) {
-      return color === 'blue' ? '/img/chess_pawnblue.svg' : '/img/chess_pawnorange.svg';
+      return color === 'blue' ? 'img/chess_pawnblue.svg' : 'img/chess_pawnorange.svg';
     }
 
-    return color === 'blue' ? '/img/label_blue.svg' : '/img/lable_orange.svg';
+    return color === 'blue' ? 'img/label_blue.svg' : 'img/lable_orange.svg';
   }
 
   private resetBoard(): void {
