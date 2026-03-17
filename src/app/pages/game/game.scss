@@ -151,7 +151,6 @@
   padding: 0;
   border-radius: var(--game-card-radius, 24px);
   background: var(--gradient-card-front);
-  box-shadow: none;
   cursor: pointer;
   transition: transform 180ms ease;
 }
@@ -191,10 +190,6 @@
   backface-visibility: hidden;
 }
 
-.memory-card__face--back {
-  transform: rotateY(0deg);
-}
-
 .memory-card__face--front {
   transform: rotateY(180deg);
   background: transparent;
@@ -203,25 +198,15 @@
 .memory-card__back-image,
 .memory-card__front-frame,
 .memory-card__front-image {
-  width: 100%;
-  height: 100%;
-}
-
-.memory-card__back-image,
-.memory-card__front-frame,
-.memory-card__front-image {
   position: absolute;
   inset: 0;
-}
-
-.memory-card__back-image,
-.memory-card__front-frame {
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 
 .memory-card__front-image {
   z-index: 1;
-  object-fit: contain;
 }
 
 .memory-card--matched {
