@@ -1,0 +1,39 @@
+// Shared score block used on both game and game-over pages.
+// Override --score-value-font in a parent scope to change the value's font.
+.score {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  font-family: var(--font-display);
+
+  &__name {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+
+  &__swatch {
+    width: 1.5rem;
+    height: 1.25rem;
+    object-fit: contain;
+  }
+
+  // label and value share identical base styles
+  &__label,
+  &__value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.25;
+    font-family: var(--score-value-font, var(--font-display));
+  }
+
+  &__label--blue,
+  &__value--blue {
+    color: var(--color-player-a);
+  }
+
+  &__label--orange,
+  &__value--orange {
+    color: var(--color-player-b);
+  }
+}

@@ -1,3 +1,5 @@
+@use "../../../styles/abstracts" as abs;
+
 .popup-backdrop {
   position: fixed;
   inset: 0;
@@ -11,7 +13,7 @@
 .popup-content {
   width: 28.6875rem;
   padding: 1.5rem;
-  background: var(--color-surface);
+  background: var(--color-popup-bg);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
@@ -32,81 +34,73 @@
 }
 
 .popup-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include abs.btn-base;
+
   min-width: 9.125rem;
   padding: 1rem 1.5rem;
   border: 2px solid transparent;
-  font-family: var(--font-display);
   font-size: 1.25rem;
-  font-weight: 700;
   line-height: 1.25;
-  cursor: pointer;
   transition:
-    transform 180ms ease,
+    abs.$transition-ui,
     box-shadow 180ms ease;
 
   &:hover {
-    transform: translateY(-1px);
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+  }
+
+  &--primary {
+    background: var(--color-accent);
+    color: var(--color-surface);
+  }
+
+  &--secondary {
+    background: var(--color-exit-bg);
+    border-color: var(--color-exit-border);
+    color: var(--color-exit-border);
   }
 }
 
-.popup-btn--primary {
-  background: var(--color-accent);
-  color: var(--color-white);
-}
+// Gaming theme overrides — layout differences only,
+// colors are handled by CSS custom properties above.
+[data-theme="gaming"] {
+  .popup-content {
+    width: 30.0625rem;
+    padding: 2.5rem;
+    border-radius: 1.25rem;
+  }
 
-.popup-btn--secondary {
-  background: var(--color-exit-bg);
-  border-color: var(--color-exit-border);
-  color: var(--color-exit-border);
-}
+  .popup-title {
+    width: 23.5rem;
+    margin: 0 auto 3.375rem;
+    font-size: 1.75rem;
+    line-height: 1.43;
+    letter-spacing: 0.02em;
+    color: var(--color-bg);
+  }
 
-:host-context([data-theme="gaming"]) .popup-content {
-  width: 30.0625rem;
-  padding: 2.5rem;
-  background: var(--color-popup-bg);
-  border-radius: 1.25rem;
-}
+  .popup-btn {
+    min-width: auto;
+    height: 2.75rem;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.625rem;
+    font-size: 1rem;
+    line-height: 1.25;
+    letter-spacing: 0.04em;
 
-:host-context([data-theme="gaming"]) .popup-title {
-  width: 23.5rem;
-  margin: 0 auto 3.375rem;
-  font-size: 1.75rem;
-  line-height: 2.5rem;
-  letter-spacing: 0.02em;
-  color: #294f60;
-}
+    &--primary {
+      width: 12.5625rem;
+      background: var(--color-primary);
+      border-width: 1px;
+      border-color: var(--color-accent);
+    }
 
-:host-context([data-theme="gaming"]) .popup-buttons {
-  width: 100%;
-  gap: 1.5rem;
-}
-
-:host-context([data-theme="gaming"]) .popup-btn {
-  min-width: auto;
-  height: 2.75rem;
-  padding: 0.75rem 1.25rem;
-  border-radius: 0.625rem;
-  font-size: 1rem;
-  line-height: 1.25rem;
-  letter-spacing: 0.04em;
-}
-
-:host-context([data-theme="gaming"]) .popup-btn--primary {
-  width: 12.5625rem;
-  background: #ed1b76;
-  border-width: 1px;
-  border-color: #e71c4f;
-  color: #fff;
-}
-
-:host-context([data-theme="gaming"]) .popup-btn--secondary {
-  width: 11rem;
-  background: rgba(237, 27, 118, 0.08);
-  border-width: 2px;
-  border-color: #e71c4f;
-  color: #ed1b76;
+    &--secondary {
+      width: 11rem;
+      background: var(--color-exit-bg);
+      border-width: 2px;
+      border-color: var(--color-exit-border);
+      color: var(--color-primary);
+    }
+  }
 }

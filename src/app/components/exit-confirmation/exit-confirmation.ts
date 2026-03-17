@@ -8,15 +8,22 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class ExitConfirmation {
   @Input() open = false;
-  @Output() confirm = new EventEmitter<void>();
-  @Output() cancel = new EventEmitter<void>();
+  @Output() confirmed = new EventEmitter<void>();
+  @Output() cancelled = new EventEmitter<void>();
 
   protected onConfirm(): void {
-    this.confirm.emit();
+    this.confirmed.emit();
   }
 
   protected onCancel(): void {
-    this.cancel.emit();
+    this.cancelled.emit();
+  }
+
+  protected handleBackdropKeydown(event: KeyboardEvent): void {
+    if (event.key === 'Escape' || event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      this.onCancel();
+    }
   }
 
   protected onBackdropClick(event: MouseEvent): void {

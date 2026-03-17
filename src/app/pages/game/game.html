@@ -1,46 +1,41 @@
 <main class="game-page">
   <section class="game-shell">
-    <header class="game-topbar" [class.game-topbar--gaming]="isGaming()">
+    <header class="game-topbar">
       <div class="game-topbar__meta">
-        <div class="game-scoreboard" [class.game-scoreboard--gaming]="isGaming()">
+        <div class="game-scoreboard">
           @for (player of playerScores(); track player.name) {
-            <div class="game-score" [class.game-score--gaming]="isGaming()">
-              <div class="game-score__name" [class.game-score__name--gaming]="isGaming()">
+            <div class="score">
+              <div class="score__name">
                 <img
                   [src]="getPlayerSwatch(player.color === 'blue' ? 'blue' : 'orange')"
                   alt=""
                   aria-hidden="true"
-                  class="game-score__swatch"
-                  [class.game-score__swatch--gaming]="isGaming()"
+                  class="score__swatch"
                 />
                 @if (!isGaming()) {
-                  <span class="game-score__label game-score__label--{{ player.color }}">
+                  <span class="score__label score__label--{{ player.color }}">
                     {{ player.name }}
                   </span>
                 }
               </div>
-              <div
-                class="game-score__value game-score__value--{{ player.color }}"
-                [class.game-score__value--gaming]="isGaming()"
-              >
+              <div class="score__value score__value--{{ player.color }}">
                 {{ player.score }}
               </div>
             </div>
           }
         </div>
 
-        <div class="game-status" [class.game-status--gaming]="isGaming()">
-          <span class="game-status__label" [class.game-status__label--gaming]="isGaming()">
+        <div class="game-status">
+          <span class="game-status__label">
             Current player:
           </span>
-          <div class="game-status__current" [class.game-status__current--gaming]="isGaming()">
-            <span class="game-status__badge" [class.game-status__badge--gaming]="isGaming()">
+          <div class="game-status__current">
+            <span class="game-status__badge">
               <img
                 [src]="activePlayerSwatch()"
                 alt=""
                 aria-hidden="true"
                 class="game-status__swatch"
-                [class.game-status__swatch--gaming]="isGaming()"
               />
             </span>
             @if (!isGaming()) {
@@ -53,7 +48,6 @@
       <button
         type="button"
         class="game-exit"
-        [class.game-exit--gaming]="isGaming()"
         (click)="showExitPopup()"
       >
         <img src="/img/exit icon.svg" alt="" aria-hidden="true" class="game-exit__icon" />
@@ -74,7 +68,6 @@
           class="memory-card"
           [class.memory-card--flipped]="isCardFaceUp(card.id)"
           [class.memory-card--matched]="isCardMatched(card.id)"
-          [class.memory-card--gaming]="isGaming()"
           role="button"
           tabindex="0"
           [attr.aria-label]="getCardAriaLabel(card)"
@@ -105,7 +98,6 @@
                 alt=""
                 aria-hidden="true"
                 class="memory-card__front-image"
-                [class.memory-card__front-image--gaming]="isGaming()"
               />
             </span>
           </span>
@@ -116,7 +108,7 @@
 
   <app-exit-confirmation
     [open]="showExitConfirmation()"
-    (confirm)="confirmExit()"
-    (cancel)="hideExitPopup()"
+    (confirmed)="confirmExit()"
+    (cancelled)="hideExitPopup()"
   />
 </main>
