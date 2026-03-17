@@ -1,38 +1,61 @@
 <main class="game-page">
   <section class="game-shell">
-    <header class="game-topbar">
+    <header class="game-topbar" [class.game-topbar--gaming]="isGaming()">
       <div class="game-topbar__meta">
-        <div class="game-scoreboard">
+        <div class="game-scoreboard" [class.game-scoreboard--gaming]="isGaming()">
           @for (player of playerScores(); track player.name) {
-            <div class="game-score">
-              <div class="game-score__name">
+            <div class="game-score" [class.game-score--gaming]="isGaming()">
+              <div class="game-score__name" [class.game-score__name--gaming]="isGaming()">
                 <img
-                  [src]="player.color === 'blue' ? '/img/label_blue.svg' : '/img/lable_orange.svg'"
+                  [src]="getPlayerSwatch(player.color === 'blue' ? 'blue' : 'orange')"
                   alt=""
                   aria-hidden="true"
                   class="game-score__swatch"
+                  [class.game-score__swatch--gaming]="isGaming()"
                 />
-                <span class="game-score__label game-score__label--{{ player.color }}">
-                  {{ player.name }}
-                </span>
+                @if (!isGaming()) {
+                  <span class="game-score__label game-score__label--{{ player.color }}">
+                    {{ player.name }}
+                  </span>
+                }
               </div>
-              <div class="game-score__value game-score__value--{{ player.color }}">
+              <div
+                class="game-score__value game-score__value--{{ player.color }}"
+                [class.game-score__value--gaming]="isGaming()"
+              >
                 {{ player.score }}
               </div>
             </div>
           }
         </div>
 
-        <div class="game-status">
-          <span class="game-status__label">Current player:</span>
-          <div class="game-status__current">
-            <img [src]="activePlayerSwatch()" alt="" aria-hidden="true" class="game-status__swatch" />
-            <span class="game-status__value">{{ activePlayer() }}</span>
+        <div class="game-status" [class.game-status--gaming]="isGaming()">
+          <span class="game-status__label" [class.game-status__label--gaming]="isGaming()">
+            Current player:
+          </span>
+          <div class="game-status__current" [class.game-status__current--gaming]="isGaming()">
+            <span class="game-status__badge" [class.game-status__badge--gaming]="isGaming()">
+              <img
+                [src]="activePlayerSwatch()"
+                alt=""
+                aria-hidden="true"
+                class="game-status__swatch"
+                [class.game-status__swatch--gaming]="isGaming()"
+              />
+            </span>
+            @if (!isGaming()) {
+              <span class="game-status__value">{{ activePlayer() }}</span>
+            }
           </div>
         </div>
       </div>
 
-      <button type="button" class="game-exit" (click)="goToSettings()">
+      <button
+        type="button"
+        class="game-exit"
+        [class.game-exit--gaming]="isGaming()"
+        (click)="showExitPopup()"
+      >
         <img src="/img/exit icon.svg" alt="" aria-hidden="true" class="game-exit__icon" />
         <span>Exit game</span>
       </button>
@@ -44,12 +67,14 @@
       [style.--game-card-size]="gameCardSize()"
       [style.--game-board-gap]="gameBoardGap()"
       [style.--game-card-radius]="gameCardRadius()"
+      [style.--game-card-aspect-ratio]="gameCardAspectRatio()"
     >
       @for (card of cards(); track card.id) {
         <div
           class="memory-card"
           [class.memory-card--flipped]="isCardFaceUp(card.id)"
           [class.memory-card--matched]="isCardMatched(card.id)"
+          [class.memory-card--gaming]="isGaming()"
           role="button"
           tabindex="0"
           [attr.aria-label]="getCardAriaLabel(card)"
@@ -60,24 +85,27 @@
           <span class="memory-card__inner">
             <span class="memory-card__face memory-card__face--back">
               <img
-                src="/img/card theme_vibcodefront.svg"
+                [src]="cardCoverImage()"
                 alt=""
                 aria-hidden="true"
                 class="memory-card__back-image"
               />
             </span>
             <span class="memory-card__face memory-card__face--front">
-              <img
-                src="/img/card theme_vibcodefront.svg"
-                alt=""
-                aria-hidden="true"
-                class="memory-card__front-frame"
-              />
+              @if (showCardFrame()) {
+                <img
+                  [src]="cardCoverImage()"
+                  alt=""
+                  aria-hidden="true"
+                  class="memory-card__front-frame"
+                />
+              }
               <img
                 [src]="card.imageSrc"
                 alt=""
                 aria-hidden="true"
                 class="memory-card__front-image"
+                [class.memory-card__front-image--gaming]="isGaming()"
               />
             </span>
           </span>
@@ -85,4 +113,10 @@
       }
     </section>
   </section>
+
+  <app-exit-confirmation
+    [open]="showExitConfirmation()"
+    (confirm)="confirmExit()"
+    (cancel)="hideExitPopup()"
+  />
 </main>

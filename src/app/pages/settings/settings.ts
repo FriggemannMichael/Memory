@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 type ThemeOption = 'Coding vibes' | 'Gaming' | 'Da Projekts' | 'Foods';
 type PlayerOption = '1 player' | '2 players';
-type BoardSizeOption = '4 x 4' | '6 x 4' | '6 x 6';
+type BoardSizeOption = '4 x 4' | '4 x 6' | '6 x 6';
 
 const THEME_PREVIEW_BY_OPTION: Record<ThemeOption, string> = {
   'Coding vibes': 'img/ThemeVisualCoding.svg',
@@ -29,7 +29,7 @@ export class Settings {
 
   protected readonly playerOptions: PlayerOption[] = ['1 player', '2 players'];
 
-  protected readonly boardSizeOptions: BoardSizeOption[] = ['4 x 4', '6 x 4', '6 x 6'];
+  protected readonly boardSizeOptions: BoardSizeOption[] = ['4 x 4', '4 x 6', '6 x 6'];
 
   protected readonly selectedTheme = signal<ThemeOption | null>(null);
   protected readonly hoveredTheme = signal<ThemeOption | null>(null);

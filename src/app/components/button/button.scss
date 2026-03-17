@@ -3,8 +3,8 @@
   justify-content: center;
   align-items: center;
   border: 0;
-  gap: 20px;
-  padding: 24px 24px;
+  gap: 1.25rem;
+  padding: 1.5rem;
   cursor: pointer;
   transition:
     transform 180ms ease,
@@ -13,27 +13,27 @@
   &:hover {
     transform: translateY(-1px);
     box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+
+    .controller-icon {
+      transform: rotate(-37deg);
+    }
   }
 
   &-primary {
     background: var(--color-primary);
     color: var(--color-bg);
     font-family: var(--font-display);
-    font-size: 40px;
+    font-size: 2.5rem;
     font-weight: 700;
     line-height: 1;
   }
 }
 
 .controller-icon {
-  width: 44px;
-  height: 32px;
-}
-
-.btn:hover .controller-icon {
-  transform: rotate(-37deg);
+  width: 2.75rem;
+  height: 2rem;
 }
 
 .arrow {
-  width: 33px;
+  width: 2.0625rem;
 }

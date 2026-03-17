@@ -1,14 +1,14 @@
 :host {
   display: block;
-  --settings-content-width: min(1103px, 100%);
-  --settings-heading-gap: 8px;
-  --settings-section-gap: 16px;
-  --settings-option-indent: 40px;
-  --settings-summary-gap: 16px;
-  --settings-stack-gap: 54px;
-  --settings-column-gap: 185px;
-  --settings-left-gap: 53px;
-  --settings-right-gap: 46px;
+  --settings-content-width: min(68.9375rem, 100%);
+  --settings-heading-gap: 0.5rem;
+  --settings-section-gap: 1rem;
+  --settings-option-indent: 2.5rem;
+  --settings-summary-gap: 1rem;
+  --settings-stack-gap: 3.375rem;
+  --settings-column-gap: 11.5625rem;
+  --settings-left-gap: 3.3125rem;
+  --settings-right-gap: 2.875rem;
   --settings-surface: #ffffff;
   --settings-surface-muted: #f6f6f6;
   --settings-text-strong: #303131;
@@ -19,13 +19,13 @@
 
 .settings-page {
   min-height: 100vh;
-  padding: 56px 24px 80px;
+  padding: 3.5rem 1.5rem 5rem;
   background: var(--settings-surface);
 }
 
 .settings-shell {
   position: relative;
-  width: min(1440px, 100%);
+  width: min(90rem, 100%);
   margin: 0 auto;
 }
 
@@ -33,10 +33,9 @@
   display: grid;
   justify-items: start;
   gap: var(--settings-heading-gap);
-  margin-bottom: 72px;
+  margin-bottom: 4.5rem;
   width: var(--settings-content-width);
-  margin-left: auto;
-  margin-right: auto;
+  margin-inline: auto;
 }
 
 .settings-title {
@@ -49,7 +48,7 @@
 }
 
 .settings-title-line {
-  width: min(251px, 100%);
+  width: min(15.6875rem, 100%);
   border-top: 4px solid var(--settings-primary);
 }
 
@@ -69,30 +68,21 @@
 }
 
 .settings-column--left {
-  width: 255px;
+  width: 15.9375rem;
   gap: var(--settings-left-gap);
 }
 
 .settings-column--right {
-  width: 460px;
+  width: 28.75rem;
   gap: var(--settings-right-gap);
 }
 
-.settings-card,
-.settings-toolbar {
-  background: transparent;
-}
-
-.settings-card {
-  padding: 0;
-}
-
 .settings-card--themes {
-  width: 255px;
+  width: 15.9375rem;
 }
 
 .settings-card--choices {
-  width: 244px;
+  width: 15.25rem;
 }
 
 .settings-toolbar {
@@ -100,7 +90,7 @@
   align-items: center;
   justify-content: space-between;
   gap: var(--settings-section-gap);
-  padding: 14px 20px;
+  padding: 0.875rem 1.25rem;
   background: var(--settings-surface-muted);
 }
 
@@ -114,7 +104,7 @@
 .settings-card__heading h2 {
   margin: 0;
   font-family: var(--settings-font-text);
-  font-size: 24px;
+  font-size: 1.5rem;
   font-weight: 700;
   line-height: 1.15;
   color: var(--settings-text-strong);
@@ -122,8 +112,8 @@
 
 .settings-card__icon,
 .settings-start__icon {
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   object-fit: contain;
   flex: 0 0 auto;
 }
@@ -134,21 +124,21 @@
 }
 
 .settings-group {
-  display: grid;
+  display: block;
 }
 
 .settings-options {
   display: grid;
-  gap: 12px;
+  gap: 0.75rem;
   padding-left: var(--settings-option-indent);
 }
 
 .settings-option {
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.625rem;
   font-family: var(--settings-font-text);
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 400;
   line-height: 1.1;
   color: var(--settings-text-strong);
@@ -168,7 +158,7 @@
 }
 
 .settings-option__highlight {
-  width: 32px;
+  width: 2rem;
   height: auto;
   margin-left: auto;
   object-fit: contain;
@@ -181,8 +171,8 @@
 }
 
 .settings-option__control {
-  width: 24px;
-  height: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
   flex: 0 0 auto;
   object-fit: contain;
 }
@@ -200,17 +190,16 @@
 .settings-summary {
   display: flex;
   align-items: center;
-  flex-wrap: nowrap;
   gap: var(--settings-summary-gap);
   font-family: var(--settings-font-text);
-  font-size: 20px;
+  font-size: 1.25rem;
   line-height: 1.1;
   color: var(--settings-text-strong);
   white-space: nowrap;
 }
 
 .settings-summary__slash {
-  width: 54px;
+  width: 3.375rem;
   height: 0;
   border-top: 4px solid var(--settings-primary);
   transform: rotate(116.57deg);
@@ -219,12 +208,12 @@
 .settings-start {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 14px 20px;
+  gap: 0.5rem;
+  padding: 0.875rem 1.25rem;
   border: 0;
   background: var(--settings-primary);
   font-family: var(--settings-font-display);
-  font-size: 20px;
+  font-size: 1.25rem;
   font-weight: 700;
   line-height: 1.25;
   color: var(--settings-text-strong);
@@ -257,7 +246,7 @@
 
 @media (max-width: 1100px) {
   .settings-grid {
-    gap: 32px;
+    gap: 2rem;
   }
 
   .settings-column--left,
@@ -269,16 +258,16 @@
 
 @media (max-width: 820px) {
   .settings-page {
-    padding: 32px 16px 40px;
+    padding: 2rem 1rem 2.5rem;
   }
 
   .settings-header {
-    margin-bottom: 36px;
+    margin-bottom: 2.25rem;
   }
 
   .settings-grid {
     flex-direction: column;
-    gap: 32px;
+    gap: 2rem;
   }
 
   .settings-options {
@@ -288,7 +277,7 @@
   .settings-column--left,
   .settings-column--right {
     width: 100%;
-    gap: 32px;
+    gap: 2rem;
   }
 
   .settings-toolbar {

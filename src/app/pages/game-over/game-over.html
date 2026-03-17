@@ -1,0 +1,55 @@
+<main class="gameover-page">
+  <section class="gameover-shell">
+
+    <h1 class="gameover-title" data-text="game over" aria-label="Game over">
+      game over
+    </h1>
+
+    <div class="gameover-result">
+      <p class="gameover-result__label">Final score</p>
+
+      <div class="gameover-scoreboard">
+        <div class="gameover-score">
+          <div class="gameover-score__name">
+            <img src="/img/label_blue.svg" alt="" aria-hidden="true" class="gameover-score__swatch" />
+            <span class="gameover-score__label gameover-score__label--blue">Blue</span>
+          </div>
+          <span class="gameover-score__value gameover-score__value--blue">{{ scoreBlue() }}</span>
+        </div>
+
+        @if (isTwoPlayer()) {
+          <div class="gameover-score">
+            <div class="gameover-score__name">
+              <img src="/img/lable_orange.svg" alt="" aria-hidden="true" class="gameover-score__swatch" />
+              <span class="gameover-score__label gameover-score__label--orange">Orange</span>
+            </div>
+            <span class="gameover-score__value gameover-score__value--orange">{{ scoreOrange() }}</span>
+          </div>
+        }
+      </div>
+
+      @if (isTwoPlayer()) {
+        <p class="gameover-winner">
+          @if (winner() === 'draw') {
+            It's a draw!
+          } @else {
+            <span class="gameover-winner__name gameover-winner__name--{{ winner() }}">
+              {{ winner() === 'blue' ? 'Blue' : 'Orange' }}
+            </span>
+            wins!
+          }
+        </p>
+      }
+    </div>
+
+    <div class="gameover-actions">
+      <button type="button" class="gameover-btn gameover-btn--secondary" (click)="goHome()">
+        Home
+      </button>
+      <button type="button" class="gameover-btn gameover-btn--primary" (click)="newGame()">
+        New game
+      </button>
+    </div>
+
+  </section>
+</main>

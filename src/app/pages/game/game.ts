@@ -1,11 +1,13 @@
 import { DOCUMENT } from '@angular/common';
 import { Component, computed, effect, inject, signal } from '@angular/core';
+
+import { ExitConfirmation } from '../../components/exit-confirmation/exit-confirmation';
 import { ActivatedRoute, Router } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 
 type ThemeOption = 'Coding vibes' | 'Gaming' | 'Da Projekts' | 'Foods';
 type PlayerOption = '1 player' | '2 players';
-type BoardSizeOption = '4 x 4' | '6 x 4' | '6 x 6';
+type BoardSizeOption = '4 x 4' | '4 x 6' | '6 x 6';
 type ThemeKey = 'code-vibes' | 'gaming';
 
 type CardItem = {
@@ -28,9 +30,31 @@ const THEME_KEY_BY_OPTION: Record<ThemeOption, ThemeKey> = {
 
 const BOARD_DIMENSIONS: Record<BoardSizeOption, { columns: number; rows: number }> = {
   '4 x 4': { columns: 4, rows: 4 },
-  '6 x 4': { columns: 6, rows: 4 },
+  '4 x 6': { columns: 4, rows: 6 },
   '6 x 6': { columns: 6, rows: 6 },
 };
+
+const GAME_ASSETS = [
+  '/thems/game/memory-game-icon-01.svg',
+  '/thems/game/memory-game-icon-02.svg',
+  '/thems/game/memory-game-icon-03.svg',
+  '/thems/game/memory-game-icon-04.svg',
+  '/thems/game/memory-game-icon-05.svg',
+  '/thems/game/memory-game-icon-06.svg',
+  '/thems/game/memory-game-icon-07.svg',
+  '/thems/game/memory-game-icon-08.svg',
+  '/thems/game/memory-game-icon-09.svg',
+  '/thems/game/memory-game-icon-10.svg',
+  '/thems/game/memory-game-icon-11.svg',
+  '/thems/game/memory-game-icon-12.svg',
+  '/thems/game/memory-game-icon-13.svg',
+  '/thems/game/memory-game-icon-14.svg',
+  '/thems/game/memory-game-icon-15.svg',
+  '/thems/game/memory-game-icon-16.svg',
+  '/thems/game/memory-game-icon-17.svg',
+  '/thems/game/memory-game-icon-18.svg',
+  '/thems/game/memory-game-icon-19.svg',
+];
 
 const VIBES_ASSETS = [
   '/thems/vibes/angular.svg',
@@ -56,6 +80,7 @@ const VIBES_ASSETS = [
 @Component({
   selector: 'app-game',
   standalone: true,
+  imports: [ExitConfirmation],
   templateUrl: './game.html',
   styleUrl: './game.scss',
 })
@@ -73,6 +98,7 @@ export class Game {
   private readonly locked = signal(false);
   private readonly scores = signal<number[]>([0, 0]);
   private readonly activePlayerIndex = signal(0);
+  protected readonly showExitConfirmation = signal(false);
 
   protected readonly selectedTheme = computed<ThemeOption>(() => {
     const theme = this.queryParams().get('theme');
@@ -95,9 +121,9 @@ export class Game {
   });
 
   protected readonly activePlayerSwatch = computed(() =>
-    this.activePlayerIndex() === 1
-      ? '/img/lable_orange.svg'
-      : '/img/label_blue.svg',
+    this.isGaming()
+      ? '/img/chess_pawn.png'
+      : this.getPlayerSwatch(this.activePlayerIndex() === 1 ? 'orange' : 'blue'),
   );
 
   protected readonly boardDimensions = computed(
@@ -143,12 +169,23 @@ export class Game {
 
   protected readonly gameGridColumns = computed(() => `${this.boardDimensions().columns}`);
   protected readonly gameCardSize = computed(() =>
-    this.selectedBoardSize() === '4 x 4' ? '120px' : '1fr',
+    this.selectedBoardSize() === '4 x 4' ? (this.isGaming() ? '105px' : '120px') : '1fr',
   );
   protected readonly gameBoardGap = computed(() => '16px');
-  protected readonly gameCardRadius = computed(() =>
-    this.selectedBoardSize() === '4 x 4' ? '0' : '24px',
+  protected readonly gameCardAspectRatio = computed(() =>
+    this.isGaming() ? '105 / 120' : '1',
   );
+  protected readonly gameCardRadius = computed(() => {
+    if (this.isGaming()) return '12px';
+    return this.selectedBoardSize() === '4 x 4' ? '0' : '1.5rem';
+  });
+  protected readonly isGaming = computed(
+    () => THEME_KEY_BY_OPTION[this.selectedTheme()] === 'gaming',
+  );
+  protected readonly cardCoverImage = computed(() =>
+    this.isGaming() ? '/img/GameThemeFront.svg' : '/img/card theme_vibcodefront.svg',
+  );
+  protected readonly showCardFrame = computed(() => !this.isGaming());
 
   constructor() {
     this.document.body.setAttribute('data-theme', THEME_KEY_BY_OPTION[this.selectedTheme()]);
@@ -162,6 +199,31 @@ export class Game {
 
   protected goToSettings(): void {
     this.router.navigate(['/settings']);
+  }
+
+  private goToGameOver(): void {
+    const s = this.scores();
+    this.router.navigate(['/game-over'], {
+      queryParams: {
+        scoreBlue: s[0],
+        scoreOrange: s[1],
+        player: this.selectedPlayer(),
+        theme: THEME_KEY_BY_OPTION[this.selectedTheme()],
+      },
+    });
+  }
+
+  protected showExitPopup(): void {
+    this.showExitConfirmation.set(true);
+  }
+
+  protected hideExitPopup(): void {
+    this.showExitConfirmation.set(false);
+  }
+
+  protected confirmExit(): void {
+    this.hideExitPopup();
+    this.goToSettings();
   }
 
   protected flipCard(card: CardItem): void {
@@ -191,12 +253,17 @@ export class Game {
     }
 
     if (firstCard.designId === secondCard.designId) {
-      this.matchedCardIds.set([...this.matchedCardIds(), firstId, secondId]);
+      const newMatched = [...this.matchedCardIds(), firstId, secondId];
+      this.matchedCardIds.set(newMatched);
       this.flippedCardIds.set([]);
       const idx = this.activePlayerIndex();
       const updated = [...this.scores()];
       updated[idx] = (updated[idx] ?? 0) + 1;
       this.scores.set(updated);
+
+      if (newMatched.length === this.cards().length) {
+        setTimeout(() => this.goToGameOver(), 600);
+      }
       return;
     }
 
@@ -240,6 +307,14 @@ export class Game {
     return 'Hidden memory card';
   }
 
+  protected getPlayerSwatch(color: 'blue' | 'orange'): string {
+    if (this.isGaming()) {
+      return color === 'blue' ? '/img/chess_pawnblue.svg' : '/img/chess_pawnorange.svg';
+    }
+
+    return color === 'blue' ? '/img/label_blue.svg' : '/img/lable_orange.svg';
+  }
+
   private resetBoard(): void {
     this.matchedCardIds.set([]);
     this.flippedCardIds.set([]);
@@ -249,8 +324,8 @@ export class Game {
   }
 
   private getThemeAssets(theme: ThemeOption): string[] {
-    if (theme === 'Coding vibes') {
-      return VIBES_ASSETS;
+    if (theme === 'Gaming') {
+      return GAME_ASSETS;
     }
 
     return VIBES_ASSETS;
@@ -286,6 +361,6 @@ export class Game {
   }
 
   private isBoardSizeOption(value: string | null): value is BoardSizeOption {
-    return value === '4 x 4' || value === '6 x 4' || value === '6 x 6';
+    return value === '4 x 4' || value === '4 x 6' || value === '6 x 6';
   }
 }

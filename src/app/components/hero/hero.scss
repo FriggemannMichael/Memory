@@ -1,7 +1,7 @@
 .hero {
   display: flex;
   flex-direction: column;
-  max-width: 900px;
+  max-width: 56.25rem;
   text-align: center;
 
   app-button {
@@ -10,18 +10,17 @@
 
   &__subtitle {
     display: flex;
-    justify-content: flex-start;
-    margin: 0 0 8px;
+    margin: 0 0 0.5rem;
     font-family: var(--font-text);
-    font-size: 48px;
+    font-size: 3rem;
     font-weight: 400;
     line-height: 1.1;
   }
 
   &__title {
-    margin: 0 0 24px;
+    margin: 0 0 1.5rem;
     font-family: var(--font-display);
-    font-size: 140px;
+    font-size: 8.75rem;
     font-weight: 700;
     line-height: 1;
   }
