@@ -1,0 +1,66 @@
+@use "sass:map";
+
+$font-family-display: "Red Rose", serif;
+$font-family-text: "Almarai", sans-serif;
+$font-family-gaming: "Orbitron", sans-serif;
+$font-family-numbers: "October Devanagari", serif;
+
+$color-white: #ffffff;
+$color-dark: #303131;
+$color-surface-muted: #f6f6f6;
+
+$themes: (
+  "code-vibes": (
+    color-bg: $color-dark,
+    color-text: $color-white,
+    color-text-strong: $color-dark,
+    color-primary: #f0ea6e,
+    color-player-a: #2bb1ff,
+    color-player-b: #f58e39,
+    color-accent: #4dd5bc,
+    color-surface: $color-white,
+    color-surface-soft: #e8f3f0,
+    color-surface-muted: $color-surface-muted,
+    color-exit-bg: rgba(134, 233, 214, 0.2),
+    color-exit-border: #4dd5bc,
+    gradient-card-front: linear-gradient(212.26deg, #4dd5bc 29.42%, #286f62 123.94%),
+    font-display: $font-family-display,
+    font-text: $font-family-text,
+    font-numbers: $font-family-numbers,
+  ),
+  "gaming": (
+    color-bg: #294f60,
+    color-text: $color-white,
+    color-text-strong: $color-dark,
+    color-primary: #ed1b76,
+    color-player-a: #097fc5,
+    color-player-b: #ea6900,
+    color-accent: #e71c4f,
+    color-surface: $color-white,
+    color-surface-soft: #f6f1f3,
+    color-surface-muted: #f0f6f9,
+    color-popup-bg: #f0f6f9,
+    color-exit-bg: rgba(237, 27, 118, 0.08),
+    color-exit-border: #e71c4f,
+    gradient-card-front: linear-gradient(147.13deg, #ed1b76 1.28%, #0a2835 142.53%),
+    font-display: $font-family-gaming,
+    font-text: $font-family-text,
+    font-numbers: $font-family-gaming,
+  ),
+);
+
+@function theme($name) {
+  @return map.get($themes, $name);
+}
+
+@mixin theme-variables($name) {
+  $theme: theme($name);
+
+  @if $theme == null {
+    @error "Unknown theme `#{$name}`.";
+  }
+
+  @each $token, $value in $theme {
+    --#{$token}: #{$value};
+  }
+}

@@ -1,0 +1,88 @@
+<main class="game-page">
+  <section class="game-shell">
+    <header class="game-topbar">
+      <div class="game-topbar__meta">
+        <div class="game-scoreboard">
+          @for (player of playerScores(); track player.name) {
+            <div class="game-score">
+              <div class="game-score__name">
+                <img
+                  [src]="player.color === 'blue' ? '/img/label_blue.svg' : '/img/lable_orange.svg'"
+                  alt=""
+                  aria-hidden="true"
+                  class="game-score__swatch"
+                />
+                <span class="game-score__label game-score__label--{{ player.color }}">
+                  {{ player.name }}
+                </span>
+              </div>
+              <div class="game-score__value game-score__value--{{ player.color }}">
+                {{ player.score }}
+              </div>
+            </div>
+          }
+        </div>
+
+        <div class="game-status">
+          <span class="game-status__label">Current player:</span>
+          <div class="game-status__current">
+            <img [src]="activePlayerSwatch()" alt="" aria-hidden="true" class="game-status__swatch" />
+            <span class="game-status__value">{{ activePlayer() }}</span>
+          </div>
+        </div>
+      </div>
+
+      <button type="button" class="game-exit" (click)="goToSettings()">
+        <img src="/img/exit icon.svg" alt="" aria-hidden="true" class="game-exit__icon" />
+        <span>Exit game</span>
+      </button>
+    </header>
+
+    <section
+      class="game-board"
+      [style.--game-grid-columns]="gameGridColumns()"
+      [style.--game-card-size]="gameCardSize()"
+      [style.--game-board-gap]="gameBoardGap()"
+      [style.--game-card-radius]="gameCardRadius()"
+    >
+      @for (card of cards(); track card.id) {
+        <div
+          class="memory-card"
+          [class.memory-card--flipped]="isCardFaceUp(card.id)"
+          [class.memory-card--matched]="isCardMatched(card.id)"
+          role="button"
+          tabindex="0"
+          [attr.aria-label]="getCardAriaLabel(card)"
+          [attr.aria-disabled]="isCardMatched(card.id)"
+          (click)="flipCard(card)"
+          (keydown)="handleCardKeydown($event, card)"
+        >
+          <span class="memory-card__inner">
+            <span class="memory-card__face memory-card__face--back">
+              <img
+                src="/img/card theme_vibcodefront.svg"
+                alt=""
+                aria-hidden="true"
+                class="memory-card__back-image"
+              />
+            </span>
+            <span class="memory-card__face memory-card__face--front">
+              <img
+                src="/img/card theme_vibcodefront.svg"
+                alt=""
+                aria-hidden="true"
+                class="memory-card__front-frame"
+              />
+              <img
+                [src]="card.imageSrc"
+                alt=""
+                aria-hidden="true"
+                class="memory-card__front-image"
+              />
+            </span>
+          </span>
+        </div>
+      }
+    </section>
+  </section>
+</main>

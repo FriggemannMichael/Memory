@@ -33,9 +33,15 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
+    "@angular-devkit/core": "^21.0.2",
+    "@angular-devkit/schematics": "^21.0.2",
     "@angular/build": "^21.0.2",
     "@angular/cli": "^21.0.2",
     "@angular/compiler-cli": "^21.0.0",
+    "@nx/angular": "22.5.4",
+    "@nx/workspace": "22.5.4",
+    "@schematics/angular": "^21.0.2",
+    "nx": "22.5.4",
     "typescript": "~5.9.2"
   }
 }

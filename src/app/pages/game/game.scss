@@ -1,0 +1,274 @@
+:host {
+  display: block;
+}
+
+.game-page {
+  min-height: 100vh;
+  padding: 32px 24px 48px;
+  background:
+    radial-gradient(circle at top, rgba(77, 213, 188, 0.18), transparent 32%), var(--color-bg);
+  color: var(--color-text);
+}
+
+.game-shell {
+  width: min(1180px, 100%);
+  margin: 0 auto;
+  display: grid;
+  gap: 54px;
+}
+
+.game-topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+}
+
+.game-topbar__meta {
+  display: flex;
+  align-items: center;
+  gap: clamp(32px, 8vw, 170px);
+}
+
+.game-scoreboard {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 17px 20px;
+  background: var(--color-exit-bg);
+}
+
+.game-score {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-family: var(--font-display);
+}
+
+.game-score__name {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.game-score__swatch {
+  width: 24px;
+  height: 20px;
+  object-fit: contain;
+}
+
+.game-score__label {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.game-score__label--blue,
+.game-score__value--blue {
+  color: var(--color-player-a);
+}
+
+.game-score__label--orange,
+.game-score__value--orange {
+  color: var(--color-player-b);
+}
+
+.game-score__value {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.game-status {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-display);
+}
+
+.game-status__label {
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.game-status__current {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.game-status__swatch {
+  width: 29px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.game-status__value {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.game-exit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 16px 24px;
+  border: 1px solid var(--color-exit-border);
+  background: var(--color-exit-bg);
+  color: var(--color-text);
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.25;
+  cursor: pointer;
+}
+
+.game-exit__icon {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+}
+
+.game-board {
+  --game-grid-columns: 4;
+  --game-card-size: 1fr;
+  --game-board-gap: 16px;
+  display: grid;
+  grid-template-columns: repeat(var(--game-grid-columns), minmax(0, var(--game-card-size)));
+  gap: var(--game-board-gap);
+  justify-content: center;
+}
+
+.memory-card {
+  display: block;
+  position: relative;
+  perspective: 1000px;
+  width: var(--game-card-size);
+  aspect-ratio: 1 / 1;
+  border: none;
+  padding: 0;
+  border-radius: var(--game-card-radius, 24px);
+  background: var(--gradient-card-front);
+  box-shadow: none;
+  cursor: pointer;
+  transition: transform 180ms ease;
+}
+
+.memory-card[aria-disabled='true'] {
+  cursor: default;
+}
+
+.memory-card:hover {
+  transform: translateY(-3px);
+}
+
+.memory-card:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 6px;
+}
+
+.memory-card__inner {
+  display: block;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 420ms ease;
+}
+
+.memory-card--flipped .memory-card__inner,
+.memory-card--matched .memory-card__inner {
+  transform: rotateY(180deg);
+}
+
+.memory-card__face {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  backface-visibility: hidden;
+}
+
+.memory-card__face--back {
+  transform: rotateY(0deg);
+}
+
+.memory-card__face--front {
+  transform: rotateY(180deg);
+  background: transparent;
+}
+
+.memory-card__back-image,
+.memory-card__front-frame,
+.memory-card__front-image {
+  width: 100%;
+  height: 100%;
+}
+
+.memory-card__back-image,
+.memory-card__front-frame,
+.memory-card__front-image {
+  position: absolute;
+  inset: 0;
+}
+
+.memory-card__back-image,
+.memory-card__front-frame {
+  object-fit: contain;
+}
+
+.memory-card__front-image {
+  z-index: 1;
+  object-fit: contain;
+}
+
+.memory-card--matched {
+  cursor: default;
+  opacity: 0.9;
+}
+
+@media (max-width: 900px) {
+  .game-topbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .game-topbar__meta {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 20px;
+  }
+
+  .game-scoreboard {
+    flex-wrap: wrap;
+  }
+
+  .game-board {
+    gap: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .game-page {
+    padding: 20px 16px 32px;
+  }
+
+  .game-scoreboard,
+  .game-exit {
+    width: 100%;
+  }
+
+  .game-status {
+    flex-wrap: wrap;
+  }
+
+  .game-board {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .memory-card {
+    border-radius: 18px;
+  }
+}

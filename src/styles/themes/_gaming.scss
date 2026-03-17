@@ -1,16 +1,5 @@
+@use "../abstracts/tokens";
+
 [data-theme="gaming"] {
-  --color-bg: #294f60;
-  --color-text: #ffffff;
-  --color-primary: #ed1b76;
-  --color-player-a: #097fc5;
-  --color-player-b: #ea6900;
-  --color-accent: #e71c4f;
-  --color-surface-soft: #f6f1f3;
-  --color-popup-bg: #f0f6f9;
-  --color-exit-bg: rgba(237, 27, 118, 0.08);
-  --color-exit-border: #e71c4f;
-  --gradient-card-front: linear-gradient(147.13deg, #ed1b76 1.28%, #0a2835 142.53%);
-  --font-display: "Orbitron", sans-serif;
-  --font-text: "Almarai", sans-serif;
-  --font-numbers: "Orbitron", sans-serif;
+  @include tokens.theme-variables("gaming");
 }
