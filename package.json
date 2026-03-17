@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:memory": "ng build --base-href /memory/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "lint": "ng lint"

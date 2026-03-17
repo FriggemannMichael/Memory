@@ -1,7 +1,7 @@
-/* Local font setup for the /memory deployment target. */
+/* Local font setup bundled from public/fonts. */
 @font-face {
   font-family: "Red Rose";
-  src: url("/memory/fonts/RedRose-VariableFont_wght.ttf") format("truetype");
+  src: url("../../../public/fonts/RedRose-VariableFont_wght.ttf") format("truetype");
   font-style: normal;
   font-weight: 300 700;
   font-display: swap;
@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: "Almarai";
-  src: url("/memory/fonts/Almarai-Regular.ttf") format("truetype");
+  src: url("../../../public/fonts/Almarai-Regular.ttf") format("truetype");
   font-style: normal;
   font-weight: 400;
   font-display: swap;
@@ -17,7 +17,7 @@
 
 @font-face {
   font-family: "Almarai";
-  src: url("/memory/fonts/Almarai-Bold.ttf") format("truetype");
+  src: url("../../../public/fonts/Almarai-Bold.ttf") format("truetype");
   font-style: normal;
   font-weight: 700;
   font-display: swap;
@@ -25,7 +25,7 @@
 
 @font-face {
   font-family: "Orbitron";
-  src: url("/memory/fonts/Orbitron-VariableFont_wght.ttf") format("truetype");
+  src: url("../../../public/fonts/Orbitron-VariableFont_wght.ttf") format("truetype");
   font-style: normal;
   font-weight: 400 900;
   font-display: swap;
@@ -33,7 +33,7 @@
 
 @font-face {
   font-family: "October Devanagari";
-  src: url("/memory/fonts/AnekDevanagari-VariableFont_wdth,wght.ttf") format("truetype");
+  src: url("../../../public/fonts/AnekDevanagari-VariableFont_wdth,wght.ttf") format("truetype");
   font-style: normal;
   font-weight: 400 800;
   font-display: swap;
